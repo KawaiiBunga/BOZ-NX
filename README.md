@@ -1,6 +1,6 @@
 # Call of Duty: Black Ops Zombies for Nintendo Switch
 
-A Switch homebrew port by **Kawaii**, version **0.5.0**. The original Android game's ARM32 code
+A Switch homebrew port, version **0.5.0**. The original Android game's ARM32 code
 runs directly on the CPU, without Dynarmic. No game files are included.
 
 ## Install
@@ -146,3 +146,5 @@ Credits: the SDK implementation comes from
 [libnx32](https://github.com/aks796/libnx32), and
 [mesa32](https://github.com/aks796/mesa32). Third-party notices remain with their
 source. The port is unofficial and is not affiliated with Activision.
+
+You can support this and my other projects on [Ko-fi](https://ko-fi.com/kawaiibunga).
