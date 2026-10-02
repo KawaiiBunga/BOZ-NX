@@ -1,4 +1,5 @@
 TARGET := codboz_native
+SPLIT_DIAGNOSTICS ?= 0
 PORT_NPDM_PROGRAM_ID := 0x01000000000010B0
 PORT_NPDM_MAIN_STACK := 0x800000
 PORT_CFLAGS := -ffp-contract=off -Ithird_party/imgui
@@ -21,5 +22,6 @@ $(BUILD)/%.o: %.cpp $(RENDERER_STAMP) | $(BUILD) $(BUILD)/dcr_build.h
 	@$(CXX) -MMD -MP $(CXXFLAGS) -c $< -o $@
 $(TARGET).elf: $(CPPOBJS)
 $(BUILD)/main.o: source/boz_build_id.h
+$(BUILD)/menu.o: source/boz_build_id.h
 source/boz_build_id.h: FORCE
-	@python3 tools/build_id.py
+	@python3 tools/build_id.py --split-diagnostics $(SPLIT_DIAGNOSTICS)

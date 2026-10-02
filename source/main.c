@@ -65,7 +65,7 @@
 /* No __DATE__/__TIME__ here on purpose -- they record when THIS file was
  * compiled, which is not when the binary was built, and the difference is
  * exactly what made a working fix look like a failed copy. */
-#define BOZ_BUILD_LABEL "codboz-" BOZ_BUILD_ID
+#define BOZ_BUILD_LABEL "codboz-" BOZ_VERSION "-" BOZ_BUILD_ID
 static int g_render_height = 720;
 /* The allocator is a pure bump allocator and free() reclaims nothing, so
  * exhaustion is self-inflicted and the game does not NULL-check malloc -- it
@@ -6574,7 +6574,7 @@ int main(int argc, char **argv) {
         /* Before anything reads a setting, nxlink's host included. */
         advanced_init(died);
     }
-    split_probe_init(adv_int("split_probe", 0));
+    split_probe_init(BOZ_SPLIT_DIAGNOSTICS && adv_int("split_probe", 0));
     if (split_probe_enabled()) {
         padConfigureInput(2, HidNpadStyleSet_NpadStandard);
         padInitialize(&g_pad_two, HidNpadIdType_No2);

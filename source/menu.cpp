@@ -16,6 +16,7 @@
 #include <switch.h>
 
 #include "imgui.h"
+#include "boz_build_id.h"
 
 extern "C" {
 #include "menu.h"
@@ -631,6 +632,7 @@ void tab_advanced() {
                "Costs speed in every frame, so leave it off to play.");
     boot_check("Touch markers", "touch_debug", false,
                "Draw where the screen is being touched, and log it.");
+#if BOZ_SPLIT_DIAGNOSTICS
     boot_check("Split-screen diagnostics", "split_probe", false,
                "Enable two-controller detection and capture player/camera/network "
                "state for split-screen development. Restart to apply. This build "
@@ -650,10 +652,12 @@ void tab_advanced() {
         if (ImGui::Button("Save actor sandbox", ImVec2(-1.0f, 0.0f)))
             port_setting_set("split_snapshot", 1);
         help("Save the loaded player resources and game heap for offline split-screen "
-             "development. Use once inside a match. Writing briefly pauses the game "
+             "development. Use once inside a match. Writing can pause the game for "
+             "about a minute, depending on the SD card, "
              "and needs about 100 MB of free SD space in a typical match. This is "
              "a diagnostic file, not a playable second player.");
     }
+#endif
 
     ImGui::Spacing();
     ImGui::TextWrapped("Everything on this tab applies the next time the game "

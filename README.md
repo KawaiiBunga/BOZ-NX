@@ -1,6 +1,6 @@
 # Call of Duty: Black Ops Zombies for Nintendo Switch
 
-A Switch homebrew port by **Kawaii**. The original Android game's ARM32 code
+A Switch homebrew port by **Kawaii**, version **0.5.0**. The original Android game's ARM32 code
 runs directly on the CPU, without Dynarmic. No game files are included.
 
 ## Install
@@ -10,7 +10,7 @@ APK**, and the game's **`blackops_etc.dz`** graphics data archive. This APK does
 not contain that archive: copy it from your own installed Android game data.
 Other game versions are rejected rather than patched with incompatible hooks.
 
-1. Download `codboz.nro` from this repository's Releases once a release is published.
+1. Download `codboz.nro` from this repository's Releases.
 2. Create `sd:/switch/boz-native/` and put these three files in it:
 
    ```text
@@ -73,10 +73,10 @@ The **Field of view** slider applies **60–110°** live to the first-person cam
 transition and preserves its lens magnification relative to the chosen FOV.
 Wider views can increase scene rendering work. **Show on-screen sticks** is
 checked to show the sticks and unchecked to hide them at every render resolution.
-Playable split screen is under development. **Advanced → Split-screen diagnostics**
-is an optional development mode: after restarting, it detects a second controller
-and enables **Capture split-screen state**, which appends to `split_capture.log`.
-It still runs one player and one view. Leave it off for normal play.
+This release plays with one player and one view. Split screen is under development
+and is disabled in release builds, including when an older config enables its diagnostics.
+Known issues being tracked: some game UI text clips at higher render resolutions,
+and automatic weapons can fire unreliably when holding ZR.
 
 ## Updating and troubleshooting
 
@@ -119,7 +119,8 @@ Optional staging and release packaging:
 ```
 
 Staging writes `dist/sdmc/switch/boz-native/` without replacing saves or settings.
-Release packaging includes only the NRO and this README. APKs, extracted game
+Release packaging writes `release/0.5.0/BOZ-NX-0.5.0.zip`, containing the NRO,
+this README and an NRO SHA-256 checksum. APKs, extracted game
 assets, local cover art, build output, dependencies, logs and research documents
 are ignored by Git. A fresh source checkout uses the default libnx icon; an
 optional local `launcher/icon.jpg` (256 × 256) replaces it when building.
@@ -128,9 +129,14 @@ Run `./tools/check.ps1` for host ABI, cursor, input and graphics helper checks.
 Unicorn is used only by PC tests (`python -m pip install -r tests/requirements.txt`).
 Checks with owner-supplied game files are optional; see `tools/check.ps1` parameters.
 Host checks do not replace Switch hardware testing.
+The release version is stored in `VERSION`. Normal builds disable experimental
+split-screen diagnostics. For development only, enable them with
+`./build.ps1 -Launcher -MakeArgs SPLIT_DIAGNOSTICS=1`.
 With an owner-supplied image, checks also validate the split-screen probe's game
 anchors, render-hook boundary and spawn/name-registration instructions using
-SDK and component fixtures. They do not instantiate a real second player.
+SDK and component fixtures. Optional `-GameImage` plus `-Snapshot` checks construct
+the real loaded player prefab in a PC memory copy, with SDK services modeled.
+They check construction and expose shared ownership; they do not test playable co-op.
 PC socket checks use loopback TCP/UDP; they
 do not establish working game co-op or mDNS discovery on Switch.
 

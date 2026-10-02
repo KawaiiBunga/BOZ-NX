@@ -11,6 +11,7 @@ aim_sensitivity_y=100
 render_height=720
 # 0 keeps the game's original lens; custom first-person FOV supports 60-110 degrees.
 fov_degrees=0
-# Development only: independent controller detection + manual state captures.
+# Development builds only: independent controller detection + manual state captures.
+# Ignored in release builds, including 0.5.0.
 # This does not enable playable split screen. Restart after changing.
 split_probe=0
