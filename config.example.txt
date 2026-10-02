@@ -1,0 +1,16 @@
+# Stock-clock native execution. This port never requests clock boosts.
+# L + R + Minus: touchscreen cursor; stick moves, A/ZR presses, ZL slows.
+frame_cap=60
+show_fps=1
+profilers=0
+touch_debug=0
+aim_sensitivity=100
+aim_sensitivity_y=100
+# 360, 540, 720 (default), or 1080. Restart to apply.
+# Docked buffers use 720p or 1080p; handheld buffers always use 720p.
+render_height=720
+# 0 keeps the game's original lens; custom first-person FOV supports 60-110 degrees.
+fov_degrees=0
+# Development only: independent controller detection + manual state captures.
+# This does not enable playable split screen. Restart after changing.
+split_probe=0

@@ -1,0 +1,16 @@
+{
+  "toolchain": "ghcr.io/vita2hos/devcontainer/vita2hos@sha256:3860772020f697865b0476ef72d680230b6b4f40d3f84659f546159b32f859d6",
+  "android32": "798b5e2a7b593b95e2825955ceeaf628f15f7df0",
+  "libnx32": "5b009c39eac5268f4df189bba0a18bb073f26603",
+  "mesa32": {
+    "url": "https://github.com/aks796/mesa32/releases/download/mesa-20.1.0-rc3/mesa32.zip",
+    "sha256": "55b331856a24bebf2bc0b8bb11061edd667b61f1351ce7da1b9cf31fd03a53c6"
+  },
+  "boz_sdk_source": "09368c1d3b62d894a0a8ba29141104bb80d0d326",
+  "sonic_reference": "dff06e0102b1b9112f286b2f2feaadd18de8dbf5",
+  "lzma_decoder": {
+    "source": "https://github.com/ip7z/7zip",
+    "revision": "0766b733fe3e06dd2a7f9a3cfbf2108ac73abd17",
+    "license": "Public domain"
+  }
+}

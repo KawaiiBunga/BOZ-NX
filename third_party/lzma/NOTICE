@@ -1,0 +1,4 @@
+LZMA decoder: Igor Pavlov, public domain (as stated in each source file).
+Source: https://github.com/ip7z/7zip
+Revision: 0766b733fe3e06dd2a7f9a3cfbf2108ac73abd17
+Only the portable LZMA decoder and its required headers are included.
